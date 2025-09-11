@@ -81,5 +81,51 @@
                 </div>
             </div>
         </div>
+        <div>
+            <h2 class="mt-5">Movimientos de inventario</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Almacén</th>
+                        <th>Tipo</th>
+                        <th>Cantidad</th>
+                        <th>Referencia</th>
+                        <th>Fecha - Movimiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($movs as $mov)
+                        <tr>
+                         <td>{{ $mov->product->name }}</td>
+                          <td>{{ $mov->warehouse->name }}</td>
+                            <td>{{ $mov->type }}</td>
+                            <td>{{ $mov->quantity }}</td>
+                            <td>{{ $mov->reference }}</td>
+                            <td>{{ $mov->moved_at }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <h2 class="mt-5">Stock Producto / Almac</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Almacén</th>
+                    <th>Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($stockTotal as $stock)
+                    <tr>
+                        <td>{{ $stock->product->name }}</td>
+                        <td>{{ $stock->warehouse->name }}</td>
+                        <td>{{ $stock->stock }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 @endsection
