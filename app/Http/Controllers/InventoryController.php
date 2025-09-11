@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InventoryMovement;
 use App\Models\Product;
 use App\Models\Warehouse;
 use App\Services\InventoryService;
@@ -21,8 +22,13 @@ class InventoryController extends Controller
     {
         $products = Product::all();
         $warehouses = Warehouse::all();
+        $movs = InventoryMovement::with(['product', 'warehouse'])->paginate(10);
 
-        return view('inventory', compact('products', 'warehouses'));
+        $stk = InventoryMovement::select('product_id', 'warehouse_id')->selectRaw("SUM(CASE WHEN type='IN' THEN quantity ELSE -quantity END) as stock")
+            ->groupBy('product_id', 'warehouse_id')
+            ->get();
+
+        return view('inventory', compact('products', 'warehouses', 'movs', 'stk'));
     }
 
     public function store(Request $request)
