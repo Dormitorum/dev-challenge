@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Warehouse;
+use App\Models\InventoryMovement;
 use App\Services\InventoryService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -21,8 +22,10 @@ class InventoryController extends Controller
     {
         $products = Product::all();
         $warehouses = Warehouse::all();
+        $mov = InventoryMovement::query()->orderBydesc('moved_at')->simplePaginate(10);
 
-        return view('inventory', compact('products', 'warehouses'));
+
+        return view('inventory', compact('products', 'warehouses','mov'));
     }
 
     public function store(Request $request)

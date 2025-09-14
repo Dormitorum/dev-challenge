@@ -79,6 +79,61 @@
                         </form>
                     </div>
                 </div>
+                <div class="card">
+                <div class="card-header" id="manualMovementHeading">
+                    
+                        Movimientos  /  <a href="{{ route('product.index') }}">Productos</a>
+                    
+                </div>
+                <div class="row p-3">
+                <div class="row">
+                    <div class="col-3">
+                        <b>Fecha</b>
+                    </div>
+                    <div class="col-4">
+                        <b>Producto</b>
+                    </div>
+                    <div class="col-2">
+                        <b>SKU</b>
+                    </div>
+                    <div class="col-1">
+                        <b>Cantidad</b>
+                    </div>
+                    <div class="col-2">
+                        <b>Warehouse</b>
+                    </div>
+                </div>
+                @foreach ($mov as $prod)
+                <div class="row">
+                    <div class="col-3">                        
+                        {{ date('d M Y h:m A', strtotime($prod->moved_at)) }}
+                    </div>
+                    <div class="col-4">                       
+                        <a href="{{ route('product.view',['id'=>$prod->product_id]) }}">{{ $prod->product->name }}</a>
+                    </div>
+                    <div class="col-2">
+                        {{ $prod->product->sku }}
+                    </div>
+                    <div class="col-1 text-right">
+                        @if ($prod->type == "OUT") 
+                            - 
+                        @endif
+                        {{ $prod->quantity }}
+                    </div>
+                    <div class="col-2">
+                        {{ $prod->warehouse->code }}  {{ $prod->warehouse->name }} 
+                    </div>                               
+                </div>            
+                @endforeach  
+            
+                <div class="row p-3">
+                    {{ $mov->links() }}
+                </div>                
+
+                </div>
+            </div>
+        
+                </div>
             </div>
         </div>
     </div>

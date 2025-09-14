@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9fdb9898cc880d43e80ee360f7a4c57f",
+    "content-hash": "c73ce6dc3d1c6b49676e358a352ecf8a",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -5084,16 +5084,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.5.44",
+            "version": "8.5.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e1d7ab63dc670dedf76202bb01b593195b0d4196"
+                "reference": "5a69265c55871fad3d35c7933a55b977ec148c20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e1d7ab63dc670dedf76202bb01b593195b0d4196",
-                "reference": "e1d7ab63dc670dedf76202bb01b593195b0d4196",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/5a69265c55871fad3d35c7933a55b977ec148c20",
+                "reference": "5a69265c55871fad3d35c7933a55b977ec148c20",
                 "shasum": ""
             },
             "require": {
@@ -5162,7 +5162,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/8.5.44"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/8.5.45"
             },
             "funding": [
                 {
@@ -5186,7 +5186,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-08-20T14:35:58+00:00"
+            "time": "2025-09-11T06:14:05+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -6009,8 +6009,11 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2"
+        "php": "8.3.0"
     },
     "platform-dev": {},
+    "platform-overrides": {
+        "php": "7.4.11"
+    },
     "plugin-api-version": "2.6.0"
 }
