@@ -69,6 +69,7 @@
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Movimiento de Inventario</a>
+                        <a href="{{ url('/config/') }}">Configuración</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
