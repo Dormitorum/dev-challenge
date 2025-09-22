@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\InventoryMovement;
 use InvalidArgumentException;
+use Exception;
 
 class InventoryService
 {
@@ -20,6 +21,14 @@ class InventoryService
 
         if ($quantity <= 0) {
             throw new InvalidArgumentException('La cantidad debe ser mayor que 0');
+        }
+
+        if ($type === 'OUT') {
+            $stock = InventoryMovement::currentStockByProductANdWherehouse($productId, $warehouseId);
+
+            if ($stock < $quantity) {
+                throw new Exception("Stock insuficiente para realizar la salida.");
+            }
         }
 
         return InventoryMovement::create([
